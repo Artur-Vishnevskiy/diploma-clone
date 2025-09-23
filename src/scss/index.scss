@@ -1,0 +1,32 @@
+@import "./fonts.scss";
+@import "./variables";
+@import "./header.scss";
+@import "./bunner.scss";
+@import "./features.scss";
+@import "./work.scss";
+@import "./our_team.scss";
+@import "./testimonials.scss"; 
+@import "./download.scss";
+@import "./location.scss";
+@import "./footer.scss";
+
+
+* {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+html {
+  font-family: 'Raleway', 'Open Sans', sans-serif;
+}
+
+.container{
+  max-width: 1170px;
+  margin: 0 auto;
+  padding: 0 15px;
+  position: relative;
+}
+

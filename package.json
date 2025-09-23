@@ -1,0 +1,22 @@
+{
+  "name": "kursach",
+  "version": "1.0.0",
+  "description": "",
+  "source": "src/index.html",
+  "scripts": {
+    "start": "parcel",
+    "build": "parcel build"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@parcel/transformer-sass": "^2.15.4",
+    "concat": "^1.0.3",
+    "http-server": "^14.1.1",
+    "parcel": "^2.15.4",
+    "sass": "^1.92.1"
+  },
+  "dependencies": {
+    "bootstrap": "^5.3.8"
+  }
+}

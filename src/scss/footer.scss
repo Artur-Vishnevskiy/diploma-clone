@@ -1,0 +1,43 @@
+.footer {
+    padding: 24px 0;
+    background-color: #353C65;
+
+    &_title {
+        margin: auto;
+        width: 370px;
+        text-align: center;
+
+        span:first-child {
+            color: #6C7279;
+        }
+
+        span:last-child {
+            color: #FFF;
+        }
+    }
+}
+
+/* Планшет 1024px */
+@media (max-width: 1024px) {
+    .footer {
+        padding: 20px 0;
+    }
+    
+    .footer_title {
+        width: 315px;
+    }
+}
+
+/* Телефон 320px */
+@media (max-width: 320px) {
+    .footer {
+        padding: 15px 0;
+    }
+    
+    .footer_title {
+        font-size: 14px;
+        width: 100%;
+        max-width: 285px;
+        padding: 0 7px;
+    }
+}
