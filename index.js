@@ -27,3 +27,21 @@ console.log(String(count));
 console.log(Number(userName));
 console.log(`${count}`);
 console.log(+userName);
+
+//Задание 4
+
+let a = 1
+let b = 2
+let c = 'белых медведей'
+
+console.log(a + "" + b + " " + c);
+
+//Задание 5
+
+let word1 = "доступ";
+let word2 = "морпех";
+let word3 = "наледь";
+let word4 = "попрек";
+let word5 = "рубило";
+let lengtWords = (word1 + word2 + word3 + word4 + word5).length;
+console.log(lengtWords);
