@@ -61,3 +61,25 @@ console.log(`Variable: student have type: ${typeof(student)}`);
 const nameHuman = prompt("Ваше имя:");
 const ageHuman = prompt("Ваше возраст:");
 console.log(`Ваше имя:${name} Ваш возраст:${age}`);
+
+// Задание 8
+
+let e = 3;
+let d = 4;
+
+console.log(e);
+console.log(d);
+
+e = d+e;
+d = e-d;
+e = e-d;
+
+console.log(e);
+console.log(d);
+
+//Задание 9
+
+let codeWord1 = "обернись";
+let codeWord2 = "неужели";
+let codeWord3 = "огурцы";
+let codeWord4 = "липкие";
