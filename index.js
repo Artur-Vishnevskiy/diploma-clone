@@ -45,3 +45,19 @@ let word4 = "попрек";
 let word5 = "рубило";
 let lengtWords = (word1 + word2 + word3 + word4 + word5).length;
 console.log(lengtWords);
+
+//Задание 6
+
+let name = "artur";
+let age = 19;
+let student = true;
+
+console.log(`Variable: name have type: ${typeof(name)}`);
+console.log(`Variable: age have type: ${typeof(age)}`);
+console.log(`Variable: student have type: ${typeof(student)}`);
+
+//Задание 7
+
+const nameHuman = prompt("Ваше имя:");
+const ageHuman = prompt("Ваше возраст:");
+console.log(`Ваше имя:${name} Ваш возраст:${age}`);
