@@ -1,4 +1,4 @@
-import { STORAGE_KEY, DEFAULTE_TASKS } from "../state/constants";
+import { STORAGE_KEY, DEFAULTE_TASKS } from "../state/constants.js";
 
 const STORAGE = window.localStorage;
 

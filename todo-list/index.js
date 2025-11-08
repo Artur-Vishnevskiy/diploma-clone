@@ -59,5 +59,4 @@ MainContainer.addEventListener("click", handleCardClick);
 
 (() => {
   renderMainContainer();
-  renderFavoritesContianer();
 })();
