@@ -1,49 +1,63 @@
+import { Element } from "./scripts/lib/Element.js";
+import { renderTasks } from "./scripts/render.js";
+import { Header } from "./scripts/components/Header.js";
+import { Footer } from "./scripts/components/Footer.js";
+import {
+  tasks,
+  addTask,
+  deleteTask,
+} from "./scripts/state/taskList.js";
+
 const ROOT = document.getElementById("root");
 
-function Element(tagName, attibutes) {
-    this.element = document.createElement(tagName);
+const MainContainer = new Element("main", {
+  id: "main",
+});
 
-    const { textContent, innerHTML, ...restAttributes } = attibutes;
-
-    if (textContent) {
-    this.element.textContent = textContent;
-  }
-
-  if (innerHTML) {
-    this.element.innerHTML = innerHTML;
-  }
-
-  for (const key in restAttributes) {
-    this.element.setAttribute(key, attibutes[key]);
-  }
-
-  return this.element;
+function renderMainContainer() {
+  MainContainer.innerHTML = "";
+  MainContainer.append(...renderTasks(tasks));
 }
-
-const HEADER_ELEMENT = new Element("header", {id: "header", class: "header"} );
-const buttonDeleteAll = new Element("button", {
-    id: "button",
-    textContent: "Delete All",
-});
-HEADER_ELEMENT.append(buttonDeleteAll);
-const headerForm = new Element("form", {id: "header-form"});
-headerForm.append(buttonDeleteAll);
-HEADER_ELEMENT.append(headerForm);
-const inputTodo = new Element("input", {
-    type: "text",
-    id: "todo-input",
-    placeholder: "Enter todo...",
-});
-headerForm.append(inputTodo);
-const buttonAdd = new Element("button", {
-    id: "button",
-    textContent: "Add",
-});
-headerForm.append(buttonAdd);
 
 const fragment = document.createDocumentFragment();
 fragment.append(
-  HEADER_ELEMENT,
+  Header(onSubmitForm),
+  MainContainer,
+  Footer()
 );
 
 ROOT.append(fragment);
+
+function onSubmitForm(values) {
+  addTask(values);
+  renderMainContainer();
+}
+
+function onDelete(cardId) {
+  deleteTask(cardId);
+  renderMainContainer();
+}
+
+function handleCardClick(event) {
+  const btn = event.target.closest("[data-action]");
+
+  if (!btn) return;
+
+  const action = btn.getAttribute("data-action");
+  const cardId = btn.getAttribute("data-id");
+
+  if (action === "complete") {
+    onFavorite(cardId);
+  }
+
+  if (action === "delete") {
+    onDelete(cardId);
+  }
+}
+
+MainContainer.addEventListener("click", handleCardClick);
+
+(() => {
+  renderMainContainer();
+  renderFavoritesContianer();
+})();
