@@ -20,6 +20,12 @@ export function deleteTask(taskId) {
   storage.save(tasks);
 }
 
+export function completeTask(taskId) {
+  const index = tasks.findIndex((t) => String(t.id) === taskId);
+  tasks[index].isComplete = !tasks[index].isComplete;
+  storage.save(tasks);
+}
+
 window.addEventListener("storage", (event) => {
   if (event.key === STORAGE_KEY) {
     tasks = storage.load();

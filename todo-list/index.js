@@ -38,6 +38,11 @@ function onDelete(cardId) {
   renderMainContainer();
 }
 
+function onComplete(cardId) {
+  completeTask(cardId);
+  renderMainContainer();
+}
+
 function handleCardClick(event) {
   const btn = event.target.closest("[data-action]");
 
@@ -47,7 +52,7 @@ function handleCardClick(event) {
   const cardId = btn.getAttribute("data-id");
 
   if (action === "complete") {
-    onFavorite(cardId);
+    onComplete(cardId);
   }
 
   if (action === "delete") {
