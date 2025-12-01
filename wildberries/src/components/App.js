@@ -1,5 +1,6 @@
 import { Element } from './Element.js';
 import Header from './Header.js';
+import ProductSlider from './ProductSlider.js';
 import ProductCard from './ProductCard.js';
 import CartModal from './CartModal.js';
 
@@ -10,6 +11,7 @@ export default class App {
         this.products = [];
         this.filteredProducts = [];
         this.cartModal = null;
+        this.productSlider = null;
     }
 
     init(products) {
@@ -23,6 +25,7 @@ export default class App {
         );
         
         this.cartModal = new CartModal(this.cart, () => this.handleCartModalClose());
+        this.productSlider = new ProductSlider(this.filteredProducts, this.cart);
         
         const modalElement = this.cartModal.render();
         document.body.appendChild(modalElement);
@@ -38,25 +41,10 @@ export default class App {
     }
 
     renderMainContent() {
-        const productCards = this.filteredProducts.map(product => {
-            const productCard = new ProductCard(product, this.cart);
-            return productCard.render();
-        });
-
-        const productsGrid = Element('div', { class: 'products-grid' }, ...productCards);
-
-        const sectionTitle = Element('h2', { 
-            class: 'section__title',
-            textContent: 'Хиты продаж'
-        });
-
-        const sectionElement = Element('section', { class: 'section' },
-            sectionTitle,
-            productsGrid
-        );
+        const sliderElement = this.productSlider.render();
 
         const mainElement = Element('main', { class: 'main container' },
-            sectionElement
+            sliderElement
         );
 
         return mainElement;
@@ -71,14 +59,8 @@ export default class App {
             );
         }
         
-        this.updateProductsDisplay();
-    }
-
-    updateProductsDisplay() {
-        const mainElement = document.querySelector('.main');
-        if (mainElement) {
-            const newMainContent = this.renderMainContent();
-            mainElement.replaceWith(newMainContent);
+        if (this.productSlider) {
+            this.productSlider.updateProducts(this.filteredProducts);
         }
     }
 

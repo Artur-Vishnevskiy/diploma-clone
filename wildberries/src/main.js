@@ -11,7 +11,7 @@ class Application {
         const products = [
             {
                 id: 1,
-                name: "Бритва",
+                name: "Треккинговые штаны",
                 price: 900,
                 oldPrice: 1000,
                 discount: 10,
@@ -20,7 +20,7 @@ class Application {
             },
             {
                 id: 2,
-                name: "Куртка",
+                name: "Ветровка горная",
                 price: 1200,
                 oldPrice: null,
                 discount: 0,
@@ -29,7 +29,7 @@ class Application {
             },
             {
                 id: 3,
-                name: "Духи",
+                name: "Рюкзак походный",
                 price: 1500,
                 oldPrice: 1800,
                 discount: 17,
@@ -38,12 +38,48 @@ class Application {
             },
             {
                 id: 4,
-                name: "Джинсы",
+                name: "Термобелье",
                 price: 800,
                 oldPrice: null,
                 discount: 0,
                 images: ['/assets/images/products/thermal-1.jpg'],
                 isNew: true
+            },
+            {
+                id: 5,
+                name: "Треккинговые ботинки",
+                price: 2500,
+                oldPrice: 3000,
+                discount: 17,
+                images: ['/assets/images/products/boots-1.jpg'],
+                isNew: false
+            },
+            {
+                id: 6,
+                name: "Спальный мешок",
+                price: 1800,
+                oldPrice: null,
+                discount: 0,
+                images: ['/assets/images/products/sleeping-bag-1.jpg'],
+                isNew: true
+            },
+            {
+                id: 7,
+                name: "Палатка 2-местная",
+                price: 3500,
+                oldPrice: 4000,
+                discount: 13,
+                images: ['/assets/images/products/tent-1.jpg'],
+                isNew: false
+            },
+            {
+                id: 8,
+                name: "Фонарь тактический",
+                price: 600,
+                oldPrice: 800,
+                discount: 25,
+                images: ['/assets/images/products/flashlight-1.jpg'],
+                isNew: false
             }
         ];
 
