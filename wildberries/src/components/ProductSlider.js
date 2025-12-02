@@ -2,9 +2,10 @@ import { Element } from './Element.js';
 import ProductCard from './ProductCard.js';
 
 export default class ProductSlider {
-    constructor(products, cart) {
+    constructor(products, cart, onQuickView) {
         this.products = products;
         this.cart = cart;
+        this.onQuickView = onQuickView;
         this.currentSlide = 0;
         this.slidesToShow = 4;
     }
@@ -24,7 +25,7 @@ export default class ProductSlider {
         return Element('div', { class: 'product-slider__header' },
             Element('h2', { 
                 class: 'product-slider__title',
-                textContent: 'Хиты продаж'
+                textContent: 'Успей купить новинки:'
             })
         );
     }
@@ -34,7 +35,7 @@ export default class ProductSlider {
         this.track = track;
 
         this.products.forEach(product => {
-            const productCard = new ProductCard(product, this.cart);
+            const productCard = new ProductCard(product, this.cart, this.onQuickView);
             const slide = Element('div', { class: 'product-slider__slide' },
                 productCard.render()
             );
@@ -111,7 +112,7 @@ export default class ProductSlider {
         if (this.track) {
             this.track.innerHTML = '';
             this.products.forEach(product => {
-                const productCard = new ProductCard(product, this.cart);
+                const productCard = new ProductCard(product, this.cart, this.onQuickView);
                 const slide = Element('div', { class: 'product-slider__slide' },
                     productCard.render()
                 );

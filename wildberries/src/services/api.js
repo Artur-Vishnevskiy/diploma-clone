@@ -1,15 +1,23 @@
-import { API_URL } from '../constants.js';
+const API_URL = 'https://692ddfa4e5f67cd80a4d4690.mockapi.io/api/v1/Products'
 
 export class ApiService {
     async getProducts() {
         try {
             const response = await fetch(API_URL);
-            if (!response.ok) {
-                throw new Error('Ошибка загрузки товаров');
-            }
-            return await response.json();
+            const products = await response.json();
+            
+            return products.map(product => ({
+                id: product.id,
+                name: product.name || 'Товар',
+                price: Number(product.price) || 0,
+                oldPrice: product.oldPrice ? Number(product.oldPrice) : null,
+                discount: product.discount || 0,
+                images: [product.image],
+                isNew: product.isNew || false
+            }));
+            
         } catch (error) {
-            console.error('Ошибка API:', error);
+            console.log('API недоступен');
             return this.getMockProducts();
         }
     }
@@ -18,75 +26,75 @@ export class ApiService {
         return [
             {
                 id: 1,
-                name: "Треккинговые штаны",
-                price: 900,
-                oldPrice: 1000,
-                discount: 10,
-                images: ['/assets/images/products/pants-1.jpg'],
+                name: "Джинсы",
+                price: 120,
+                oldPrice: 168,
+                discount: 40,
+                images: ['image1.jpg'],
                 isNew: false
             },
             {
                 id: 2,
-                name: "Ветровка горная",
-                price: 1200,
+                name: "Ботинки",
+                price: 400,
                 oldPrice: null,
                 discount: 0,
-                images: ['/assets/images/products/jacket-1.jpg'],
+                images: ['image2.jpg'],
                 isNew: true
             },
             {
                 id: 3,
-                name: "Рюкзак походный",
-                price: 1500,
-                oldPrice: 1800,
-                discount: 17,
-                images: ['/assets/images/products/backpack-1.jpg'],
+                name: "Рубашка мужская",
+                price: 65,
+                oldPrice: 74.75,
+                discount: 15,
+                images: ['image3.png'],
                 isNew: false
             },
             {
                 id: 4,
-                name: "Термобелье",
-                price: 800,
+                name: "Куртка",
+                price: 450,
                 oldPrice: null,
                 discount: 0,
-                images: ['/assets/images/products/thermal-1.jpg'],
+                images: ['image4.jpg'],
                 isNew: true
             },
             {
                 id: 5,
-                name: "Треккинговые ботинки",
-                price: 2500,
-                oldPrice: 3000,
-                discount: 17,
-                images: ['/assets/images/products/boots-1.jpg'],
-                isNew: false
+                name: "Куртка",
+                price: 450,
+                oldPrice: null,
+                discount: 0,
+                images: ['image4.jpg'],
+                isNew: true
             },
             {
                 id: 6,
-                name: "Спальный мешок",
-                price: 1800,
+                name: "Куртка",
+                price: 450,
                 oldPrice: null,
                 discount: 0,
-                images: ['/assets/images/products/sleeping-bag-1.jpg'],
+                images: ['image4.jpg'],
                 isNew: true
             },
             {
                 id: 7,
-                name: "Палатка 2-местная",
-                price: 3500,
-                oldPrice: 4000,
-                discount: 13,
-                images: ['/assets/images/products/tent-1.jpg'],
-                isNew: false
+                name: "Куртка",
+                price: 450,
+                oldPrice: null,
+                discount: 0,
+                images: ['image4.jpg'],
+                isNew: true
             },
             {
                 id: 8,
-                name: "Фонарь тактический",
-                price: 600,
-                oldPrice: 800,
-                discount: 25,
-                images: ['/assets/images/products/flashlight-1.jpg'],
-                isNew: false
+                name: "Куртка",
+                price: 450,
+                oldPrice: null,
+                discount: 0,
+                images: ['image4.jpg'],
+                isNew: true
             }
         ];
     }

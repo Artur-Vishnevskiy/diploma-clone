@@ -65,7 +65,7 @@ export default class CartModal {
             }),
             Element('span', { 
                 class: 'cart-modal__total-amount',
-                textContent: `${this.cart.getTotalAmount()} ₽`
+                textContent: `${this.cart.getTotalAmount()} byn`
             })
         );
 
@@ -92,7 +92,7 @@ export default class CartModal {
         const itemElement = Element('div', { class: 'cart-modal__item' },
             Element('img', {
                 class: 'cart-modal__item-image',
-                src: item.image || '/assets/images/placeholder.jpg',
+                src: item.image,
                 alt: item.name
             }),
             
@@ -104,7 +104,7 @@ export default class CartModal {
                 Element('div', { class: 'cart-modal__item-price' },
                     Element('span', { 
                         class: 'cart-modal__item-price-current',
-                        textContent: `${item.price} ₽`
+                        textContent: `${item.price} byn`
                     })
                 )
             ),

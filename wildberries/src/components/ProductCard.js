@@ -1,9 +1,10 @@
 import { Element } from './Element.js';
 
 export default class ProductCard {
-    constructor(product, cart) {
+    constructor(product, cart, onQuickView) {
         this.product = product;
         this.cart = cart;
+        this.onQuickView = onQuickView;
     }
 
     render() {
@@ -25,14 +26,14 @@ export default class ProductCard {
 
         const currentPriceElement = Element('span', {
             class: 'product-card__price product-card__price--current',
-            textContent: `${this.product.price} ₽`
+            textContent: `${this.product.price} byn`
         });
 
         let oldPriceElement = null;
         if (this.product.oldPrice) {
             oldPriceElement = Element('span', {
                 class: 'product-card__price product-card__price--old',
-                textContent: `${this.product.oldPrice} ₽`
+                textContent: `${this.product.oldPrice} byn`
             });
         }
 
@@ -44,7 +45,11 @@ export default class ProductCard {
         const quickViewButton = Element('button', {
             class: 'product-card__button product-card__button--quick-view',
             textContent: 'Быстрый просмотр',
-            onclick: () => this.onQuickView()
+            onclick: () => {
+                if (this.onQuickView) {
+                    this.onQuickView(this.product);
+                }
+            }
         });
 
         const addToCartButton = Element('button', {
@@ -55,9 +60,8 @@ export default class ProductCard {
 
         const imageElement = Element('img', {
             class: 'product-card__img',
-            src: this.product.images[0] || '/assets/images/placeholder.jpg',
-            alt: this.product.name,
-            loading: 'lazy'
+            src: this.product.images[0],
+            alt: this.product.name
         });
 
         const imageContainer = Element('div', { class: 'product-card__image' },
@@ -84,9 +88,5 @@ export default class ProductCard {
     onAddToCart() {
         this.cart.addProduct(this.product);
         console.log('Добавлено в корзину:', this.product.name);
-    }
-
-    onQuickView() {
-        console.log('Быстрый просмотр:', this.product.name);
     }
 }
